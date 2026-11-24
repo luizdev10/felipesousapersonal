@@ -6,15 +6,19 @@ import { config } from './src/config.js'
 const escapar = (t) =>
   String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
-const imagemOg = config.urlSite
-  ? `${config.urlSite.replace(/\/+$/, '')}/${config.imagemCompartilhamento}`
-  : config.imagemCompartilhamento
+const imagemOg = !config.imagemCompartilhamento
+  ? ''
+  : config.urlSite
+    ? `${config.urlSite.replace(/\/+$/, '')}/${config.imagemCompartilhamento}`
+    : config.imagemCompartilhamento
 
 function metaDoConfig() {
   return {
     name: 'meta-do-config',
     transformIndexHtml(html) {
-      return html
+      // Sem imagem de compartilhamento configurada, a tag og:image é removida.
+      const base = imagemOg ? html : html.replace(/\s*<meta property="og:image"[^>]*>/, '')
+      return base
         .replaceAll('%TITULO%', escapar(config.tituloAba))
         .replaceAll('%DESCRICAO%', escapar(config.descricaoSEO))
         .replaceAll('%OG_IMAGE%', escapar(imagemOg))
@@ -23,6 +27,6 @@ function metaDoConfig() {
 }
 
 export default defineConfig({
-  base: '/template-personal/',
+  base: '/felipesousapersonal/',
   plugins: [react(), tailwindcss(), metaDoConfig()],
 })

@@ -1,5 +1,7 @@
-﻿import { config, linkWhatsapp } from '../../config'
+﻿import { config, linkWhatsapp, ebookAtivo, planosAtivo } from '../../config'
 import Button from '../ui/Button'
+
+const linkClasse = 'hidden min-h-11 items-center px-2 text-xs text-papel/80 hover:text-papel sm:flex'
 
 export default function Header() {
   return (
@@ -12,7 +14,9 @@ export default function Header() {
           href="#/"
           aria-label={`${config.nome}: voltar ao início`}
           onClick={(e) => {
-            if (window.location.hash === '#/privacidade') return
+            // Em outras rotas (#/ebook, #/privacidade) o link navega normalmente para o início.
+            const h = window.location.hash
+            if (h.startsWith('#/') && h !== '#/') return
             e.preventDefault()
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
@@ -20,9 +24,11 @@ export default function Header() {
         >
           <span className="truncate">{config.nome}</span>
         </a>
-        <a href="#sobre" className="hidden min-h-11 items-center px-2 text-xs text-papel/80 hover:text-papel sm:flex">Sobre</a>
-        <a href="#faq" className="hidden min-h-11 items-center px-2 text-xs text-papel/80 hover:text-papel sm:flex">Dúvidas</a>
-        <Button href={linkWhatsapp} pequeno className="shrink-0" target="_blank" rel="noopener noreferrer">Começar</Button>
+        <a href="#sobre" className={linkClasse}>Sobre</a>
+        <a href="#atendimento" className={linkClasse}>Atendimento</a>
+        {planosAtivo && <a href="#/planos" className="flex min-h-11 items-center px-2 text-xs text-papel/80 hover:text-papel">Planos</a>}
+        {ebookAtivo && <a href="#/ebook" className={linkClasse}>E-book</a>}
+        <Button href={linkWhatsapp} pequeno className="shrink-0" target="_blank" rel="noopener noreferrer">WhatsApp</Button>
       </nav>
     </header>
   )

@@ -3,8 +3,8 @@ import { config } from '../../config'
 export default function PoliticaPrivacidade() {
   const secoes = [
     ['Quais dados coletamos', 'Quando você fala com a gente pelo WhatsApp, recebemos seu nome, número de telefone e as informações que você escolher enviar (objetivo, rotina, restrições de saúde). Este site não usa formulários, cookies de rastreamento ou pixels de anúncio.'],
-    ['Para que usamos', 'Usamos seus dados apenas para responder você, montar a proposta de treino e prestar o serviço contratado.'],
-    ['Com quem compartilhamos', 'Não vendemos seus dados. O compartilhamento acontece somente com prestadores necessários ao serviço (como o WhatsApp, operado pela Meta) ou por obrigação legal.'],
+    ['Para que usamos', 'Usamos seus dados apenas para responder você, combinar o atendimento e prestar o serviço contratado.'],
+    ['Com quem compartilhamos', 'Não vendemos seus dados. O compartilhamento acontece somente com prestadores necessários ao serviço (como o WhatsApp, operado pela Meta, e o Hotmart, que processa a compra do e-book e tem a própria política de privacidade) ou por obrigação legal.'],
     ['Por quanto tempo guardamos', 'Pelo tempo em que você for aluno e pelo prazo exigido em lei depois disso. Você pode pedir a exclusão a qualquer momento.'],
     ['Seus direitos (LGPD)', 'Você pode pedir acesso, correção, portabilidade, anonimização ou exclusão dos seus dados, e revogar consentimentos, conforme a Lei 13.709/2018.'],
     ['Contato do responsável', [config.nome, config.cref, config.cnpj && `CNPJ ${config.cnpj}`, config.email, config.telefone].filter(Boolean).join(' · ')],

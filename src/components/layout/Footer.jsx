@@ -1,25 +1,29 @@
-import { config, linkWhatsapp } from '../../config'
+import { config, linkWhatsapp, linkInstagram, ebookAtivo, planosAtivo } from '../../config'
 import Button from '../ui/Button'
 import IconeWhatsApp from '../ui/IconeWhatsApp'
+import IconeInstagram from '../ui/IconeInstagram'
 
-const instagram = config.instagram
-  ? config.instagram.startsWith('http')
-    ? config.instagram
-    : `https://instagram.com/${config.instagram.replace(/^@/, '')}`
-  : ''
-
-const iconeInstagram = (
-  <svg viewBox="0 0 24 24" className="mr-2 size-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-    <rect x="3" y="3" width="18" height="18" rx="5" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
-  </svg>
-)
+const iconeInstagram = <IconeInstagram className="mr-2 size-4" />
 
 const colunas = [
-  { t: 'Navegue', itens: [['Sobre', '#sobre'], ['Dúvidas', '#faq']] },
+  {
+    t: 'Navegue',
+    itens: [
+      ['Sobre', '#sobre'],
+      ['Atendimento', '#atendimento'],
+      planosAtivo && ['Planos', '#/planos'],
+      ebookAtivo && ['E-book', '#/ebook'],
+      ['Dúvidas', '#faq'],
+    ].filter(Boolean),
+  },
   { t: 'Legal', itens: [['Privacidade', '#/privacidade']] },
-  { t: 'Conecte', itens: [['Instagram', instagram, iconeInstagram], ['WhatsApp', linkWhatsapp, <IconeWhatsApp className="mr-2 size-4" />]] },
+  {
+    t: 'Conecte',
+    itens: [
+      ['Instagram', linkInstagram, iconeInstagram],
+      ['WhatsApp', linkWhatsapp, <IconeWhatsApp className="mr-2 size-4" />],
+    ],
+  },
 ]
 
 const tamanhoNome = Math.min(26, 140 / config.nome.length)
@@ -29,10 +33,11 @@ export default function Footer() {
     <footer className="relative overflow-hidden border-t-4 border-acento bg-tinta text-papel">
       <div className="mx-auto flex max-w-7xl flex-col justify-between gap-10 px-6 pb-10 pt-14 md:flex-row">
         <div>
-          <p className="mb-4 text-sm">Pronto para o seu primeiro treino?</p>
-          <Button href={linkWhatsapp} target="_blank" rel="noopener noreferrer">Falar com o personal</Button>
+          <p className="mb-1 text-sm">Quer conversar sobre o seu treino?</p>
+          <p className="mb-4 text-sm text-papel/60">{config.whatsappExibicao} · {config.cidade}</p>
+          <Button href={linkWhatsapp} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</Button>
         </div>
-        <div className="grid grid-cols-3 gap-6 text-sm md:gap-10">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-6 text-sm sm:grid-cols-3 md:gap-10">
           {colunas.map((c) => (
             <div key={c.t}>
               <p className="mb-2 text-xs uppercase tracking-widest text-papel/50">{c.t}</p>
