@@ -23,6 +23,6 @@ function metaDoConfig() {
 }
 
 export default defineConfig({
-  base: './',
+  base: '/template-personal/',
   plugins: [react(), tailwindcss(), metaDoConfig()],
 })
