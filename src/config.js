@@ -106,10 +106,11 @@ export const config = {
   ebook: {
     mostrar: true,
     titulo: 'Métodos do Treino de Musculação: 20 Estratégias para Evoluir de Verdade',
-    frase: 'E-book digital com 20 métodos de treino usados por atletas e preparadores físicos.',
+    // CONFIRMAR com o Felipe se pode manter a frase original: "usados por atletas e preparadores físicos".
+    frase: 'E-book digital com 20 métodos de treino usados na musculação.',
     resumo: '20 métodos de treino explicados de forma prática: como funcionam, quando usar e como combinar.',
     descricao:
-      'E-book digital com 20 métodos de treino usados por atletas e preparadores físicos. Para cada método, você vê como ele funciona, quando usar, quais músculos ele potencializa e como combiná-lo com os outros. O acesso é feito por e-mail, em computador, celular ou tablet.',
+      'Para cada método, você vê como ele funciona, quando usar, quais músculos ele potencializa e como combiná-lo com os outros. O acesso é feito por e-mail, em computador, celular ou tablet.',
     topicos: [
       'Métodos clássicos e avançados para superar platôs',
       'Estratégias para aumentar intensidade e volume de forma planejada',
@@ -126,6 +127,9 @@ export const config = {
     mostrarPreco: true,
     linkCompra: 'https://pay.hotmart.com/Y102648279R?off=x9lgwifs&hotfeature=51',
     garantia: '7 dias para reembolso, conforme as regras do Hotmart',
+    // Capa do e-book (opcional). Com src preenchido (ex.: 'img/capa-ebook.webp'), aparece no bloco amarelo, ao lado do preço.
+    // Vazio = nada é exibido e não sobra espaço.
+    capa: { src: '', alt: 'Capa do e-book Métodos do Treino de Musculação' },
     faq: [
       {
         pergunta: 'Como recebo o e-book?',
@@ -141,7 +145,8 @@ export const config = {
       },
     ],
     tituloAba: 'E-book: Métodos do Treino de Musculação | Felipe Sousa',
-    descricaoSEO: 'E-book digital com 20 métodos de treino de musculação usados por atletas e preparadores físicos. Compra pelo Hotmart, acesso por e-mail.',
+    // CONFIRMAR com o Felipe se pode manter a frase original: "usados por atletas e preparadores físicos".
+    descricaoSEO: 'E-book digital com 20 métodos de treino usados na musculação. Compra pelo Hotmart, acesso por e-mail.',
   },
   // PLANOS DE CONSULTORIA. Tudo (textos, preços, rotas) vem daqui.
   // mostrar: false esconde a seção da home, o item do menu e as rotas #/planos e #/planos/:id.

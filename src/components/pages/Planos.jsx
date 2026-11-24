@@ -38,7 +38,7 @@ export default function Planos() {
               <p className="mt-3 text-xs uppercase tracking-[0.2em] text-tinta/50">Duração: {duracaoPlano(plano)}</p>
             </div>
             <div>
-              <PrecoPlano plano={plano} grande />
+              <PrecoPlano plano={plano} grande reservarLinha />
               <div className="mt-8 flex flex-col gap-3">
                 <Button href={`#/planos/${plano.id}`} variante="claro" className="w-full">Ver detalhes</Button>
                 <Button href={linkWhatsappPlano(plano)} target="_blank" rel="noopener noreferrer" className="w-full">Quero este plano</Button>
